@@ -9,17 +9,14 @@ builds:
   - env:
       - CGO_ENABLED=0
     goos:
-      - linux
-      - windows
       - darwin
     goarch:
-    - amd64
     - arm64
     ignore:
     - goos: windows
       goarch: arm64
     ldflags:
-      - -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}} -X main.builtBy=goreleaser
+      - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}} -X main.builtBy=goreleaser
 
 checksum:
   name_template: 'checksums.txt'
