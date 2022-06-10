@@ -11,5 +11,5 @@ var (
 )
 
 func main() {
-	fmt.Printf("Ba dum, tss!, version=%v, commit=%v date=%v builtBy=%v")
+	fmt.Printf("Ba dum, tss!, version=%v, commit=%v date=%v builtBy=%v", version, commit, date, builtBy)
 }
