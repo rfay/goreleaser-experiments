@@ -1,6 +1,15 @@
 // main.go
 package main
 
+import "fmt"
+
+var (
+	version = "default"
+	commit  = "none"
+	date    = ""
+	builtBy = ""
+)
+
 func main() {
-	println("Ba dum, tss!")
+	fmt.Printf("Ba dum, tss!, version=%v, commit=%v date=%v builtBy=%v")
 }
