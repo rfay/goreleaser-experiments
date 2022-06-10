@@ -1,9 +1,4 @@
 before:
-  hooks:
-    # You may remove this if you don't use go modules.
-    - go mod tidy
-    # you may remove this if you don't need go generate
-    - go generate ./...
 dist: artifacts
 builds:
   - env:
@@ -20,6 +15,23 @@ builds:
     ldflags:
       - -extldflags -static
       - -s -w -X main.version={{.Version}} -X main.commit={{.Commit}} -X main.date={{.Date}} -X main.builtBy=goreleaser
+
+gomod:
+  # Proxy a module from proxy.golang.org, making the builds verifiable.
+  # This will only be effective if running against a tag. Snapshots will ignore this setting.
+  # Notice: for this to work your `build.main` must be a package, not a `.go` file.
+  #
+  # Default is false.
+  proxy: true
+
+  # If proxy is true, use these environment variables when running `go mod` commands (namely, `go mod tidy`).
+  # Defaults to `os.Environ()`.
+  env:
+  - GOPROXY=https://proxy.golang.org,direct
+  - GOSUMDB=sum.golang.org
+  - GOPRIVATE=example.com/blah
+
+
 
 checksum:
   name_template: 'checksums.txt'
