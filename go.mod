@@ -1,3 +1,3 @@
-module github.com/rfay/gorelease-experiments
+module github.com/rfay/goreleaser-experiments
 
 go 1.18
